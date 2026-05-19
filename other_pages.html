@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FessorPro - Inner Pages</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;overflow-x:hidden}
+
+/* PAGE SWITCHER (dev tool) */
+.page-switcher{background:#f0f0f0;border-bottom:1px solid #ddd;padding:10px 6%;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.page-switcher span{font-size:12px;font-weight:600;color:#9ca3af;margin-right:4px;letter-spacing:1px;text-transform:uppercase}
+.switch-btn{padding:6px 14px;border-radius:6px;font-size:12px;font-weight:600;border:1.5px solid #d1d5db;background:#fff;color:#64748b;cursor:pointer;transition:all .15s}
+.switch-btn.active,.switch-btn:hover{background:#6366f1;color:#fff;border-color:#6366f1}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e8e8e8;display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:68px}
+.nav-logo{font-size:22px;font-weight:800;color:#0f0f0f;text-decoration:none;letter-spacing:-0.5px}
+.nav-logo span{color:#6366f1}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:14px;font-weight:500;color:#64748b;text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:#0f0f0f}
+.nav-login{padding:9px 24px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:8px;font-size:14px;font-weight:600;color:#fff !important;text-decoration:none;transition:all .2s;box-shadow:0 2px 10px rgba(99,102,241,0.3)}
+.nav-login:hover{opacity:0.9;transform:translateY(-1px)}
+
+/* PAGE HERO */
+.page-hero{background:linear-gradient(135deg,#0a0a0f 0%,#0f0f1a 100%);color:#fff;padding:64px 6% 56px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 0%,rgba(99,102,241,0.12) 0%,transparent 70%)}
+.page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,0.4),transparent)}
+.page-hero-inner{position:relative;max-width:700px}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px}
+.breadcrumb a,.breadcrumb span{font-size:13px;color:#64748b;text-decoration:none}
+.breadcrumb a:hover{color:#a5b4fc}
+.breadcrumb .sep{color:#374151}
+.breadcrumb .current{color:#a5b4fc;font-weight:500}
+.page-hero h1{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin-bottom:14px}
+.page-hero p{font-size:16px;color:#94a3b8;line-height:1.65;max-width:540px}
+
+/* MAIN LAYOUT */
+.page-layout{display:grid;grid-template-columns:240px 1fr;gap:0;min-height:70vh}
+
+/* SIDEBAR */
+.sidebar{border-right:1px solid #f0f0f0;padding:40px 0;position:sticky;top:68px;align-self:start;max-height:calc(100vh - 68px);overflow-y:auto}
+.sidebar-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9ca3af;padding:0 28px 16px}
+.sidebar nav{position:static;background:transparent;border:none;height:auto;padding:0;display:block;backdrop-filter:none}
+.sidebar-link{display:flex;align-items:center;gap:10px;padding:11px 28px;font-size:14px;font-weight:500;color:#64748b;text-decoration:none;transition:all .15s;border-left:3px solid transparent}
+.sidebar-link:hover{color:#6366f1;background:#f5f3ff;border-left-color:#6366f1}
+.sidebar-link.active{color:#6366f1;background:#f5f3ff;border-left-color:#6366f1;font-weight:600}
+.sidebar-link svg{width:16px;height:16px;flex-shrink:0}
+
+/* CONTENT */
+.content{padding:52px 60px}
+.page{display:none}
+.page.active{display:block}
+
+/* PROSE */
+.prose h2{font-size:22px;font-weight:800;letter-spacing:-0.5px;color:#0f0f0f;margin:40px 0 16px;padding-bottom:12px;border-bottom:1px solid #f0f0f0}
+.prose h2:first-child{margin-top:0}
+.prose h3{font-size:16px;font-weight:700;color:#0f0f0f;margin:28px 0 10px}
+.prose p{font-size:15px;color:#374151;line-height:1.8;margin-bottom:16px}
+.prose ul{list-style:none;margin:0 0 20px;display:flex;flex-direction:column;gap:10px}
+.prose ul li{display:flex;gap:10px;font-size:15px;color:#374151;line-height:1.7}
+.prose ul li::before{content:'';width:6px;height:6px;background:#6366f1;border-radius:50%;flex-shrink:0;margin-top:9px}
+.prose strong{font-weight:600;color:#0f0f0f}
+.prose a{color:#6366f1;text-decoration:none}
+.prose a:hover{text-decoration:underline}
+
+/* ABOUT */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;margin:40px 0}
+.stat-box{padding:28px 20px;text-align:center;border-right:1px solid #e5e7eb;background:#fafafa}
+.stat-box:last-child{border-right:none}
+.stat-box .num{font-size:36px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-box .lbl{font-size:13px;color:#9ca3af;font-weight:500;margin-top:4px}
+.expertise-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0 32px}
+.expertise-item{display:flex;align-items:center;gap:10px;padding:14px 16px;background:#f5f3ff;border:1px solid rgba(99,102,241,0.15);border-radius:10px;font-size:14px;font-weight:500;color:#374151}
+.expertise-item::before{content:'✦';color:#6366f1;font-size:11px;flex-shrink:0}
+.features-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.feature-card{padding:24px;background:#fafafa;border:1px solid #e5e7eb;border-radius:14px;transition:all .2s}
+.feature-card:hover{border-color:#6366f1;box-shadow:0 4px 20px rgba(99,102,241,0.08)}
+.feature-card h4{font-size:15px;font-weight:700;color:#0f0f0f;margin-bottom:8px}
+.feature-card p{font-size:14px;color:#64748b;line-height:1.65;margin:0}
+.feature-icon{width:36px;height:36px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.feature-icon svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:8px}
+.contact-info{display:flex;flex-direction:column;gap:20px}
+.contact-card{padding:24px;background:#fafafa;border:1px solid #e5e7eb;border-radius:14px;display:flex;gap:16px;align-items:flex-start;transition:all .2s}
+.contact-card:hover{border-color:#6366f1;box-shadow:0 4px 20px rgba(99,102,241,0.08)}
+.contact-icon{width:44px;height:44px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-icon svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2}
+.contact-card h4{font-size:13px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:#9ca3af;margin-bottom:6px}
+.contact-card p,.contact-card a{font-size:15px;color:#374151;text-decoration:none;line-height:1.6}
+.contact-card a:hover{color:#6366f1}
+.contact-form{background:#fafafa;border:1px solid #e5e7eb;border-radius:16px;padding:32px}
+.contact-form h3{font-size:18px;font-weight:700;color:#0f0f0f;margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:11px 14px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;color:#0f0f0f;background:#fff;transition:border-color .15s;outline:none}
+.form-group input:focus,.form-group textarea:focus{border-color:#6366f1;box-shadow:0 0 0 3px rgba(99,102,241,0.08)}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.submit-btn{width:100%;padding:13px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;box-shadow:0 4px 16px rgba(99,102,241,0.3)}
+.submit-btn:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(99,102,241,0.4)}
+
+/* LEGAL PAGES */
+.legal-meta{display:inline-flex;align-items:center;gap:8px;background:#f5f3ff;border:1px solid rgba(99,102,241,0.2);color:#6366f1;font-size:13px;font-weight:600;padding:7px 16px;border-radius:100px;margin-bottom:32px}
+.legal-toc{background:#fafafa;border:1px solid #e5e7eb;border-radius:14px;padding:24px 28px;margin-bottom:40px}
+.legal-toc h4{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#9ca3af;margin-bottom:14px}
+.legal-toc ul{list-style:none;margin:0;gap:8px}
+.legal-toc ul li{display:flex;align-items:center;gap:8px;font-size:14px}
+.legal-toc ul li::before{content:'→';color:#6366f1;font-size:12px}
+.legal-toc ul li a{color:#374151;text-decoration:none;font-weight:500}
+.legal-toc ul li a:hover{color:#6366f1}
+.legal-section{margin-bottom:40px;scroll-margin-top:100px}
+.legal-section h2{font-size:20px;font-weight:800;letter-spacing:-0.3px;color:#0f0f0f;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #f0f0f0;display:flex;align-items:center;gap:10px}
+.legal-section h2 .section-num{width:28px;height:28px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+.highlight-box{background:linear-gradient(135deg,rgba(99,102,241,0.06),rgba(139,92,246,0.06));border:1px solid rgba(99,102,241,0.15);border-radius:12px;padding:20px 24px;margin:20px 0}
+.highlight-box p{margin:0;font-size:14px;color:#374151;line-height:1.75}
+.highlight-box strong{color:#6366f1}
+
+/* FOOTER */
+footer{background:#060608;padding:52px 6% 28px;color:#fff;border-top:1px solid rgba(255,255,255,0.06)}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.footer-brand .logo{font-size:20px;font-weight:800;color:#fff;display:block;margin-bottom:12px}
+.footer-brand .logo span{color:#818cf8}
+.footer-brand p{font-size:14px;color:#64748b;line-height:1.7;max-width:260px}
+.footer-col h4{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#64748b;margin-bottom:16px}
+.footer-col a{display:block;font-size:14px;color:#94a3b8;text-decoration:none;margin-bottom:10px;transition:color .15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:24px;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:13px;color:#475569}
+
+@media(max-width:900px){
+  .page-layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .content{padding:36px 24px}
+  .stats-row,.expertise-grid,.features-grid,.contact-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  nav{padding:0 4%}
+  .page-hero{padding:48px 4% 40px}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .stat-box{border-bottom:1px solid #e5e7eb}
+}
+</style>
+</head>
+<body>
+
+<!-- DEV PAGE SWITCHER -->
+<div class="page-switcher">
+  <span>Pages:</span>
+  <button class="switch-btn active" onclick="showPage('about')">About Us</button>
+  <button class="switch-btn" onclick="showPage('contact')">Contact Us</button>
+  <button class="switch-btn" onclick="showPage('privacy')">Privacy Policy</button>
+  <button class="switch-btn" onclick="showPage('terms')">Terms &amp; Conditions</button>
+  <button class="switch-btn" onclick="showPage('refund')">Refund Policy</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Fessor<span>Pro</span></a>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#" onclick="showPage('about')">About</a>
+    <a href="#" onclick="showPage('contact')">Contact</a>
+    <a href="https://fessorpro.com/login" class="nav-login" target="_blank">Login</a>
+  </div>
+</nav>
+
+<!-- ══════════════ ABOUT US ══════════════ -->
+<div id="page-about" class="page active">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="#">Home</a><span class="sep">/</span><span class="current">About Us</span>
+      </div>
+      <h1>About FessorPro</h1>
+      <p>Democratizing financial education and empowering individuals with the skills needed to excel in quantitative finance and algorithmic trading.</p>
+    </div>
+  </div>
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="sidebar-title">On this page</div>
+      <a href="#" class="sidebar-link active">Our Mission</a>
+      <a href="#" class="sidebar-link">Our Story</a>
+      <a href="#" class="sidebar-link">Our Expertise</a>
+      <a href="#" class="sidebar-link">What Sets Us Apart</a>
+      <a href="#" class="sidebar-link">Global Reach</a>
+      <a href="#" class="sidebar-link">Our Commitment</a>
+    </aside>
+    <div class="content">
+      <div class="page active">
+        <div class="prose">
+
+          <h2>Our Mission</h2>
+          <p>At FessorPro, we are dedicated to democratizing financial education and empowering individuals with the knowledge and skills needed to excel in the world of quantitative finance and algorithmic trading. Our mission is to bridge the gap between academic theory and practical application, providing hands-on learning experiences that prepare our students for real-world success.</p>
+
+          <div class="stats-row">
+            <div class="stat-box"><div class="num">5000+</div><div class="lbl">Students Trained</div></div>
+            <div class="stat-box"><div class="num">95%</div><div class="lbl">Job Placement Rate</div></div>
+            <div class="stat-box"><div class="num">50+</div><div class="lbl">Industry Partners</div></div>
+            <div class="stat-box"><div class="num">15+</div><div class="lbl">Countries Reached</div></div>
+          </div>
+
+          <h2>Our Story</h2>
+          <p>Founded in 2020 by a team of experienced quantitative analysts and finance professionals, FessorPro emerged from the recognition that traditional financial education often falls short of preparing students for the rapidly evolving landscape of modern finance.</p>
+          <p>Our founders, having worked at leading financial institutions including Goldman Sachs, Deutsche Bank, and Bank of America, identified a critical gap in the market: the lack of practical, hands-on training in Python programming for finance and algorithmic trading strategies.</p>
+
+          <h2>Our Expertise</h2>
+          <p>Our team consists of seasoned professionals with decades of combined experience across key areas of quantitative finance:</p>
+          <div class="expertise-grid">
+            <div class="expertise-item">Quantitative Analysis and Risk Management</div>
+            <div class="expertise-item">Algorithmic Trading Strategy Development</div>
+            <div class="expertise-item">Python Programming for Finance</div>
+            <div class="expertise-item">Machine Learning in Financial Markets</div>
+            <div class="expertise-item">Options Trading and Derivatives</div>
+            <div class="expertise-item">Portfolio Management and Optimization</div>
+          </div>
+
+          <h2>What Sets Us Apart</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+              <h4>Practical Learning</h4>
+              <p>Our curriculum focuses on real-world applications, using actual market data and industry-standard tools.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+              <h4>Industry Network</h4>
+              <p>Access to our extensive network of finance professionals across UAE, UK, Singapore, India, and beyond.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+              <h4>Personalized Support</h4>
+              <p>Small class sizes and individualized mentoring ensure every student receives the attention they need.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+              <h4>Career Focus</h4>
+              <p>Programs designed with career outcomes in mind, including job placement assistance and interview preparation.</p>
+            </div>
+          </div>
+
+          <h2>Our Global Reach</h2>
+          <p>While headquartered in Dubai, UAE, FessorPro serves students worldwide through our online platform. Our alumni network spans across major financial centers including London, Singapore, New York, Hong Kong, and Mumbai, creating opportunities for global career placement.</p>
+
+          <h2>Industry Recognition</h2>
+          <p>FessorPro has been recognized by leading financial institutions and educational bodies for our innovative approach to financial education. Our graduates consistently receive offers from top-tier investment banks, hedge funds, and fintech companies.</p>
+
+          <h2>Our Commitment</h2>
+          <p>We are committed to staying at the forefront of financial technology and education. Our curriculum is continuously updated to reflect the latest industry trends, regulatory changes, and technological advances in the world of finance.</p>
+          <p>Join the FessorPro community and take the next step in your journey toward becoming a quantitative finance professional.</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ CONTACT US ══════════════ -->
+<div id="page-contact" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="#">Home</a><span class="sep">/</span><span class="current">Contact Us</span>
+      </div>
+      <h1>Contact Us</h1>
+      <p>Send us an email, give us a call or drop by to have a chat — we are always here to help you!</p>
+    </div>
+  </div>
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="sidebar-title">Get in touch</div>
+      <a href="#" class="sidebar-link active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+      <a href="#" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l1.79-1.79a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>
+        Phone
+      </a>
+      <a href="#" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Address
+      </a>
+      <a href="#" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Send a Message
+      </a>
+    </aside>
+    <div class="content">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:hello@fessorpro.com">hello@fessorpro.com</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l1.79-1.79a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg></div>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+919987390615">+91 99873 90615</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div>
+              <h4>Address</h4>
+              <p>Bhandari Estate, Kasai Wadi, CTS 13/1 TO 4, B/503, Galaxy Apartment<br>SION TROMBAY ROAD, Kurla East<br>Mumbai Suburban, Maharashtra<br>MUMBAI 400070, MH, IN</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z" fill="currentColor"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.103 1.512 5.833L.057 23.428a.5.5 0 0 0 .614.614l5.595-1.455A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.511-5.18-1.402l-.37-.216-3.322.865.879-3.233-.235-.383A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" fill="currentColor"/></svg></div>
+            <div>
+              <h4>WhatsApp</h4>
+              <a href="https://wa.me/919987390615" target="_blank">Chat on WhatsApp</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Send us a Message</h3>
+          <div class="form-row">
+            <div class="form-group"><label>Full Name *</label><input type="text" placeholder="Your full name"/></div>
+            <div class="form-group"><label>Email Address *</label><input type="email" placeholder="you@example.com"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"/></div>
+            <div class="form-group"><label>Subject *</label><input type="text" placeholder="How can we help?"/></div>
+          </div>
+          <div class="form-group"><label>Message *</label><textarea placeholder="Write your message here..."></textarea></div>
+          <button class="submit-btn">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ PRIVACY POLICY ══════════════ -->
+<div id="page-privacy" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="#">Home</a><span class="sep">/</span><span class="current">Privacy Policy</span>
+      </div>
+      <h1>Privacy Policy</h1>
+      <p>How we collect, use, and protect your personal information on our platform.</p>
+    </div>
+  </div>
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="sidebar-title">Sections</div>
+      <a href="#" class="sidebar-link active">Personal Information</a>
+      <a href="#" class="sidebar-link">Information We Collect</a>
+      <a href="#" class="sidebar-link">How We Use It</a>
+      <a href="#" class="sidebar-link">Your Choices</a>
+      <a href="#" class="sidebar-link">Your Rights</a>
+      <a href="#" class="sidebar-link">Data Protection</a>
+      <a href="#" class="sidebar-link">Third Party Sites</a>
+      <a href="#" class="sidebar-link">Cross-Border Transfer</a>
+      <a href="#" class="sidebar-link">Data Retention</a>
+      <a href="#" class="sidebar-link">Indian Residents</a>
+      <a href="#" class="sidebar-link">EU / UK / EEA</a>
+      <a href="#" class="sidebar-link">California (CCPA)</a>
+    </aside>
+    <div class="content">
+      <div class="legal-meta">📅 Last Updated: October 6, 2025</div>
+      <div class="prose">
+        <p>This Privacy Policy (the "Policy") governs the manner in which the Platform collects, uses, maintains and discloses information of its users. The Policy also describes the practices that We apply to such user information, user's privacy rights and choices regarding their information. This Policy applies to all users of the Platform (referred to as "Learners", "You", "Your").</p>
+        <div class="highlight-box"><p><strong>Important:</strong> By accessing and using the Platform, providing Your Personal Information, or by otherwise signalling Your agreement when the option is presented to You, You consent to the collection, use, and disclosure of information described in this Policy and Terms of Use.</p></div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">1</span>Personal Information</h2>
+          <p><strong>"Personal Information"</strong> shall mean information which identifies a Learner — first and last name, identification number, email address, age, gender, location, photograph and/or phone number provided at the time of registration or any time thereafter on the Platform.</p>
+          <p><strong>"Sensitive Personal Information"</strong> shall include passwords and financial data, health data, official identifiers (such as biometric data, Aadhar number, social security number, driver's license, passport, etc.), information about sexual life, sexual identifier, race, ethnicity, political or religious belief or affiliation, account details and passwords, or other data categorized as 'sensitive personal data' under applicable Data Protection Laws.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">2</span>Information We Collect</h2>
+          <p>We may collect both personal and non-personal identifiable information from You in a variety of ways, including when You visit our Platform, register on the Platform, and in connection with other activities, services, features or resources we make available. Please note that:</p>
+          <ul>
+            <li>We do not ask You for Personal Information unless we truly need it, like when You are registering for any Content on the Platform.</li>
+            <li>We do not share Your Personal Information with anyone except to comply with applicable laws, develop our products and services, or protect our rights.</li>
+            <li>We do not store Personal Information on our servers unless required for the on-going operation of our Platform.</li>
+          </ul>
+          <p><strong>Personal Identifiable Information:</strong> We may collect personal-identifiable information such as Your name and email address to enable Your access to the Platform and services/products offered therein. You can always refuse to provide such information; however, it may prevent You from accessing services or products provided on the Platform.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">3</span>How We Use and Share the Information Collected</h2>
+          <p>We may collect and use Your Personal Information for the following purposes:</p>
+          <h3>To provide access to our Platform</h3>
+          <p>We use Your information to allow You to access the Platform and the services/products offered therein, including to provide customer service, fulfil purchases through the Platform, verify User information and to resolve any glitches. The legal basis for this processing is consent or, where applicable, our legitimate interests in the proper administration of our Platform.</p>
+          <h3>To improve our Platform and maintain safety</h3>
+          <p>We use Your information to improve and customize the Platform. Further, we use Your information to prevent, detect, investigate, and take measures against criminal activity, fraud, misuse of or damage to our Platform or network, and other threats and violations.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">4</span>Your Choices</h2>
+          <ul>
+            <li><strong>Limit the information You provide:</strong> You always have an option to choose the information You provide to us, including the option to update or delete Your information.</li>
+            <li><strong>Limit the communications You receive from us:</strong> You will have the option to choose what kind of communication You would like to receive. However, there may be certain communications required for legal or security purposes that you may not be able to limit.</li>
+            <li><strong>Reject Cookies:</strong> You may reject or remove cookies from Your web browser. However, some services offered on the Platform may not function when cookies are disabled.</li>
+          </ul>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">5</span>Your Rights</h2>
+          <ul>
+            <li><strong>Right to Confirmation and Access:</strong> You have the right to get confirmation and access to your Personal Information along with other supporting information.</li>
+            <li><strong>Right to Correction:</strong> You have the right to ask us to rectify your Personal Information that you think is inaccurate or incomplete.</li>
+            <li><strong>Right to be Forgotten:</strong> You have the right to restrict or prevent the continuing disclosure of your Personal Information under certain circumstances.</li>
+          </ul>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">6</span>Protection of Your Information</h2>
+          <p>We take all measures reasonably necessary to protect against the unauthorized access, use, alteration or destruction of Personal Information. Our disclosure of any such information is limited to our employees and contractors who need to know that information, and in response to court orders or governmental requests.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">7</span>Third Party Websites</h2>
+          <p>You may find links to the websites and services of our partners, suppliers, advertisers, sponsors, licensors and other third parties. The content or links that appear on these sites are not controlled by us in any manner and we are not responsible for the practices employed by such websites.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">8</span>Cross-Border Data Transfer</h2>
+          <p>Your information including any Personal Information is stored, processed, and transferred in and to the Amazon Web Service (AWS) servers and databases located in India. We may also store, process, and transfer information in and to servers in other countries depending on the location of our affiliates and service providers.</p>
+          <div class="highlight-box"><p>If you use our Platform from outside India, including in the USA, EU, EEA, and UK, your information may be transferred to, stored, and processed in India. By accessing our Platform, you consent to the transfer of information to India and other countries outside your country of residence.</p></div>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">9</span>Duration for Which Your Information is Stored</h2>
+          <p>We will retain Your information for as long as it is required for the purposes stated herein, including for the purpose of complying with legal obligations or business compliances. We will never disclose aggregated or de-identified information in a manner that could identify you as an individual.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">10</span>Terms Applicable if You are an Indian Resident</h2>
+          <p>If you are located in India, you may have the following rights under the Personal Data Protection Bill (PDPB):</p>
+          <ul>
+            <li><strong>Right to Confirmation and Access</strong></li>
+            <li><strong>Right to Correction</strong></li>
+            <li><strong>Right to Data Portability</strong></li>
+            <li><strong>Right to be Forgotten</strong></li>
+            <li><strong>Right to Erasure</strong></li>
+          </ul>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">11</span>Terms Applicable for UK / EU / EEA Residents</h2>
+          <p>If you are located in the United Kingdom (UK) or European Union (EU) or European Economic Area (EEA), you have the following rights under the UK and EU General Data Protection Regulation (GDPR):</p>
+          <ul>
+            <li><strong>Right to access Your Personal Information</strong></li>
+            <li><strong>Right to Rectification</strong></li>
+            <li><strong>Right to Erasure</strong></li>
+            <li><strong>Right to object to Processing</strong></li>
+            <li><strong>Right to restrict Processing</strong></li>
+          </ul>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">12</span>California Residents (CCPA)</h2>
+          <p>If you are a California state resident, you have the following rights to the extent set out in the CCPA:</p>
+          <ul>
+            <li>The right to access the Personal Information that we hold on you.</li>
+            <li>The right to know what Personal Information we intend on collecting before the point of collection.</li>
+            <li>The right to opt in or out of marketing, analytics, and other similar activities.</li>
+            <li>The right to equal services without discrimination.</li>
+            <li>The right to request deletion of Personal Information.</li>
+          </ul>
+          <div class="highlight-box"><p><strong>Note:</strong> We have not sold any Personal Information to third parties for a business or commercial purpose in the preceding 12 months.</p></div>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">13</span>Contact Us</h2>
+          <p>If you have any questions about this Policy, wish to exercise your rights, have concerns about privacy or grievances, please write to us at: <a href="mailto:hello@fessorpro.com">hello@fessorpro.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ TERMS & CONDITIONS ══════════════ -->
+<div id="page-terms" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="#">Home</a><span class="sep">/</span><span class="current">Terms &amp; Conditions</span>
+      </div>
+      <h1>Terms of Use</h1>
+      <p>The terms and conditions governing your use of the FessorPro platform and all services offered therein.</p>
+    </div>
+  </div>
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="sidebar-title">Sections</div>
+      <a href="#" class="sidebar-link active">Overview</a>
+      <a href="#" class="sidebar-link">Access &amp; Registration</a>
+      <a href="#" class="sidebar-link">Contact Us</a>
+    </aside>
+    <div class="content">
+      <div class="prose">
+        <div class="highlight-box"><p>These Terms of Use set out the terms and conditions for use of this Fessorpro ("Website") and any content, Public Forums, or services offered on or through the Website and/or through any mobile application(s) ("Application") (collectively referred to as the "Platform").</p></div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">1</span>Overview</h2>
+          <p>These Terms of Use apply to end users of the Website (referred to as "Learners", "You", "Your"). These Terms of Use, including the Privacy Policy and any other terms and conditions published on the Platform or communicated to you from time to time (collectively referred to as the "Agreement"), define the relationship and responsibilities between You and Creator in using the Platform.</p>
+          <p>When we speak of "Creator", "we", "us", and "our", we collectively mean Fessorpro being the creator of this Platform and the content/materials/services contained therein.</p>
+          <p>By accessing this Platform, You are agreeing to be bound by the terms of this Agreement, all applicable laws and regulations. If You disagree with any part of this Agreement or do not wish to be bound by the same, then please do not use the Platform in any manner.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">2</span>Access and Registration</h2>
+          <p>If You are an individual, You must be at least 18 (eighteen) years of age, or, if You are between the ages of 13 and 18, You must have Your parent or legal guardian's permission to use the Platform. By using the Platform, You are representing and warranting to us that You have obtained the appropriate consents/permissions.</p>
+          <div class="highlight-box"><p>If You are under the age of 13 years or 16 years (depending on your country of residence), You may neither use our Platform in any manner nor may You register for any content or services offered therein.</p></div>
+          <p>To access any Content offered on the Platform, we require You to register by providing Your name and email address. Please read our Privacy Policy to understand how we handle Your information. Further, You may also be required to make payment of a fee to access certain Content.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">3</span>Contact Us</h2>
+          <p>If You have concerns or queries regarding this Agreement, You may write to us by email at: <a href="mailto:hello@fessorpro.com">hello@fessorpro.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ REFUND POLICY ══════════════ -->
+<div id="page-refund" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="#">Home</a><span class="sep">/</span><span class="current">Refund Policy</span>
+      </div>
+      <h1>Refund Policy</h1>
+      <p>Our non-refundable education return policy — please review carefully before enrolling.</p>
+    </div>
+  </div>
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="sidebar-title">Sections</div>
+      <a href="#" class="sidebar-link active">Overview</a>
+      <a href="#" class="sidebar-link">Course Enrollment</a>
+      <a href="#" class="sidebar-link">Commitment to Learning</a>
+      <a href="#" class="sidebar-link">Course Access</a>
+      <a href="#" class="sidebar-link">Rescheduling</a>
+      <a href="#" class="sidebar-link">Exceptional Circumstances</a>
+      <a href="#" class="sidebar-link">No Return / Refund</a>
+      <a href="#" class="sidebar-link">Contact Us</a>
+    </aside>
+    <div class="content">
+      <div class="prose">
+        <div class="highlight-box"><p><strong>Fessorpro is registered with the company name Fessorpro-Arbaaz in India.</strong><br><br>FessorPro Institute is dedicated to delivering exceptional educational programs and fostering an environment conducive to optimal learning outcomes. As part of our commitment, we have established a <strong>non-refundable education return policy</strong>. Please carefully review the following terms and conditions.</p></div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">1</span>Course Enrollment</h2>
+          <p>Upon enrollment in any course offered by FessorPro Institute, the tuition fee becomes non-refundable. This policy applies to both online and in-person programs, and it is binding for all enrolled students.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">2</span>Commitment to Learning</h2>
+          <p>At FessorPro Institute, we place great emphasis on the dedication and commitment of our students. By enrolling in a course, you acknowledge and affirm your commitment to actively participate in the program, diligently complete the assigned coursework, and make the most of the educational opportunities provided.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">3</span>Course Access</h2>
+          <p>Once enrolled, students will be granted exclusive access to the course materials and resources provided by FessorPro Institute. This access is strictly non-transferable and intended solely for the enrolled student. Sharing or distributing course materials to unauthorized individuals is strictly prohibited and may result in immediate termination of access.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">4</span>Rescheduling or Withdrawal</h2>
+          <p>In the event that you need to reschedule or withdraw from a course, we kindly request that you notify FessorPro Institute as soon as possible. However, please note that the tuition fee remains non-refundable, regardless of the circumstances surrounding the rescheduling or withdrawal.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">5</span>Exceptional Circumstances</h2>
+          <p>FessorPro Institute recognizes that unforeseen circumstances may arise, such as medical emergencies or other exceptional situations. In such cases, FessorPro Institute may, at its sole discretion, consider requests for course deferral or credit transfer on a case-by-case basis. All requests must be submitted in writing, accompanied by relevant supporting documentation.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">6</span>Changes to Course Schedule</h2>
+          <p>FessorPro Institute reserves the right to make modifications to the course schedule, including alterations to dates, times, or instructors, if deemed necessary. Reasonable efforts will be made to notify enrolled students of any such changes in advance.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">7</span>Satisfaction Guarantee</h2>
+          <p>While our education return policy is non-refundable, FessorPro Institute is committed to ensuring the utmost satisfaction of our students. Should you encounter any issues or concerns during your course, we encourage you to promptly communicate them to our dedicated student support team.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">8</span>No Return, No Refund, No Cancellations</h2>
+          <ul>
+            <li><strong>No Return:</strong> All sales are final. We do not accept returns for any products or services once purchased.</li>
+            <li><strong>No Refund:</strong> We do not offer refunds for any products or services once a purchase is made. Please ensure your order is correct before completing your purchase.</li>
+            <li><strong>No Cancellations:</strong> Once an order is placed and course access is given, it cannot be canceled. Please review your order carefully before finalizing your purchase.</li>
+          </ul>
+          <div class="highlight-box"><p>By enrolling in a course at FessorPro Institute, you expressly agree to comply with and be bound by the terms and conditions outlined in this non-refundable education return policy.</p></div>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="section-num">9</span>Contact Us for Any Issues</h2>
+          <p>If you have any questions about our Returns and Refunds Policy, please contact us at: <a href="mailto:hello@fessorpro.com">hello@fessorpro.com</a></p>
+          <p>Thank you for choosing FessorPro Institute as your educational partner.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo">Fessor<span>Pro</span></span>
+      <p>Live coding sessions &amp; expert handholding with top Quants. Weekly personalized tutoring, guaranteed learning outcomes.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="about-us.html">About Us</a>
+      <a href="https://fessorpro.com/blog" target="_blank">Blogs</a>
+      <a href="contact-us.html">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms-conditions.html">Terms &amp; Conditions</a>
+      <a href="refund-policy.html">Refund Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 FessorPro.com — All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.switch-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  const btns = document.querySelectorAll('.switch-btn');
+  const map = {about:0,contact:1,privacy:2,terms:3,refund:4};
+  if(map[id] !== undefined) btns[map[id]].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

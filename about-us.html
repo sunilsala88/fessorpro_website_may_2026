@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FessorPro - About Us</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;overflow-x:hidden}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e8e8e8;display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:68px}
+.nav-logo{font-size:22px;font-weight:800;color:#0f0f0f;text-decoration:none;letter-spacing:-0.5px}
+.nav-logo span{color:#6366f1}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-login{padding:9px 24px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:8px;font-size:14px;font-weight:600;color:#fff;text-decoration:none;transition:all .2s;box-shadow:0 2px 10px rgba(99,102,241,0.3)}
+.nav-login:hover{opacity:0.9;transform:translateY(-1px)}
+
+/* PAGE HERO */
+.page-hero{background:linear-gradient(135deg,#0a0a0f 0%,#0f0f1a 100%);color:#fff;padding:80px 6% 60px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 0%,rgba(99,102,241,0.15) 0%,transparent 70%)}
+.page-hero-inner{position:relative;max-width:900px}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:24px}
+.breadcrumb a,.breadcrumb span{font-size:13px;color:#64748b;text-decoration:none}
+.breadcrumb a:hover{color:#a5b4fc}
+.breadcrumb .sep{color:#374151}
+.breadcrumb .current{color:#a5b4fc;font-weight:500}
+.page-hero h1{font-size:clamp(32px,4vw,48px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px}
+.page-hero p{font-size:16px;color:#94a3b8;line-height:1.65;max-width:700px}
+
+/* CONTENT */
+.content{padding:80px 6%;max-width:1200px;margin:0 auto}
+.content h2{font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-1px;color:#0f0f0f;margin:40px 0 20px;padding-bottom:12px;border-bottom:1px solid #f0f0f0}
+.content h2:first-child{margin-top:0}
+.content p{font-size:15px;color:#374151;line-height:1.8;margin-bottom:18px}
+
+/* FOOTER */
+footer{background:#060608;padding:60px 6% 32px;color:#fff;border-top:1px solid rgba(255,255,255,0.06)}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.footer-brand .logo{font-size:22px;font-weight:800;color:#fff;display:block;margin-bottom:14px;letter-spacing:-0.5px}
+.footer-brand .logo span{color:#818cf8}
+.footer-brand p{font-size:14px;color:#64748b;line-height:1.7;max-width:280px}
+.footer-col h4{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#64748b;margin-bottom:18px}
+.footer-col a{display:block;font-size:14px;color:#94a3b8;text-decoration:none;margin-bottom:12px;transition:color .15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:28px;flex-wrap:wrap;gap:16px}
+.footer-bottom p{font-size:13px;color:#475569}
+
+@media(max-width:900px){
+  nav{padding:0 4%}
+  .page-hero{padding:60px 4% 48px}
+  .content{padding:60px 4%}
+  .footer-top{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  nav{padding:0 4%}
+  .page-hero{padding:48px 4% 40px}
+  .content{padding:40px 4%}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Fessor<span>Pro</span></a>
+  <div class="nav-right">
+    <a href="https://fessorpro.com/login" class="nav-login" target="_blank">Login</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span><span class="current">About Us</span>
+    </div>
+    <h1>About FessorPro</h1>
+    <p>Democratizing financial education and empowering individuals with the skills needed to excel in quantitative finance and algorithmic trading.</p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="content">
+  <h2>Our Mission</h2>
+  <p>At FessorPro, we are dedicated to democratizing financial education and empowering individuals with the knowledge and skills needed to excel in the world of quantitative finance and algorithmic trading. Our mission is to bridge the gap between academic theory and practical application, providing hands-on learning experiences that prepare our students for real-world success.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;margin:40px 0">
+    <div style="padding:28px 20px;text-align:center;border-right:1px solid #e5e7eb;background:#fafafa">
+      <div style="font-size:36px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">5000+</div>
+      <div style="font-size:13px;color:#9ca3af;font-weight:500;margin-top:4px">Students Trained</div>
+    </div>
+    <div style="padding:28px 20px;text-align:center;border-right:1px solid #e5e7eb;background:#fafafa">
+      <div style="font-size:36px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">95%</div>
+      <div style="font-size:13px;color:#9ca3af;font-weight:500;margin-top:4px">Job Placement Rate</div>
+    </div>
+    <div style="padding:28px 20px;text-align:center;border-right:1px solid #e5e7eb;background:#fafafa">
+      <div style="font-size:36px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">50+</div>
+      <div style="font-size:13px;color:#9ca3af;font-weight:500;margin-top:4px">Industry Partners</div>
+    </div>
+    <div style="padding:28px 20px;text-align:center;background:#fafafa">
+      <div style="font-size:36px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">15+</div>
+      <div style="font-size:13px;color:#9ca3af;font-weight:500;margin-top:4px">Countries Reached</div>
+    </div>
+  </div>
+
+  <h2>Our Story</h2>
+  <p>Founded in 2020 by a team of experienced quantitative analysts and finance professionals, FessorPro emerged from the recognition that traditional financial education often falls short of preparing students for the rapidly evolving landscape of modern finance.</p>
+  <p>Our founders, having worked at leading financial institutions including Goldman Sachs, Deutsche Bank, and Bank of America, identified a critical gap in the market: the lack of practical, hands-on training in Python programming for finance and algorithmic trading strategies.</p>
+
+  <h2>Our Expertise</h2>
+  <p>Our team consists of seasoned professionals with decades of combined experience across key areas of quantitative finance:</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0 32px">
+    <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#f5f3ff;border:1px solid rgba(99,102,241,0.15);border-radius:10px;font-size:14px;font-weight:500;color:#374151">
+      <span style="color:#6366f1;font-size:11px">✦</span> Quantitative Analysis and Risk Management
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#f5f3ff;border:1px solid rgba(99,102,241,0.15);border-radius:10px;font-size:14px;font-weight:500;color:#374151">
+      <span style="color:#6366f1;font-size:11px">✦</span> Algorithmic Trading Strategy Development
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#f5f3ff;border:1px solid rgba(99,102,241,0.15);border-radius:10px;font-size:14px;font-weight:500;color:#374151">
+      <span style="color:#6366f1;font-size:11px">✦</span> Python Programming for Finance
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#f5f3ff;border:1px solid rgba(99,102,241,0.15);border-radius:10px;font-size:14px;font-weight:500;color:#374151">
+      <span style="color:#6366f1;font-size:11px">✦</span> Machine Learning in Financial Markets
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#f5f3ff;border:1px solid rgba(99,102,241,0.15);border-radius:10px;font-size:14px;font-weight:500;color:#374151">
+      <span style="color:#6366f1;font-size:11px">✦</span> Options Trading and Derivatives
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#f5f3ff;border:1px solid rgba(99,102,241,0.15);border-radius:10px;font-size:14px;font-weight:500;color:#374151">
+      <span style="color:#6366f1;font-size:11px">✦</span> Portfolio Management and Optimization
+    </div>
+  </div>
+
+  <h2>What Sets Us Apart</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0">
+    <div style="padding:24px;background:#fafafa;border:1px solid #e5e7eb;border-radius:14px">
+      <h4 style="font-size:15px;font-weight:700;color:#0f0f0f;margin-bottom:8px">Practical Learning</h4>
+      <p style="font-size:14px;color:#64748b;line-height:1.65;margin:0">Our curriculum focuses on real-world applications, using actual market data and industry-standard tools.</p>
+    </div>
+    <div style="padding:24px;background:#fafafa;border:1px solid #e5e7eb;border-radius:14px">
+      <h4 style="font-size:15px;font-weight:700;color:#0f0f0f;margin-bottom:8px">Industry Network</h4>
+      <p style="font-size:14px;color:#64748b;line-height:1.65;margin:0">Access to our extensive network of finance professionals across UAE, UK, Singapore, India, and beyond.</p>
+    </div>
+    <div style="padding:24px;background:#fafafa;border:1px solid #e5e7eb;border-radius:14px">
+      <h4 style="font-size:15px;font-weight:700;color:#0f0f0f;margin-bottom:8px">Personalized Support</h4>
+      <p style="font-size:14px;color:#64748b;line-height:1.65;margin:0">Small class sizes and individualized mentoring ensure every student receives the attention they need.</p>
+    </div>
+    <div style="padding:24px;background:#fafafa;border:1px solid #e5e7eb;border-radius:14px">
+      <h4 style="font-size:15px;font-weight:700;color:#0f0f0f;margin-bottom:8px">Career Focus</h4>
+      <p style="font-size:14px;color:#64748b;line-height:1.65;margin:0">Programs designed with career outcomes in mind, including job placement assistance and interview preparation.</p>
+    </div>
+  </div>
+
+  <h2>Our Global Reach</h2>
+  <p>While headquartered in Mumbai FessorPro serves students worldwide through our online platform. Our alumni network spans across major financial centers including London, Singapore, New York, Hong Kong, and Mumbai, creating opportunities for global career placement.</p>
+
+  <h2>Industry Recognition</h2>
+  <p>FessorPro has been recognized by leading financial institutions and educational bodies for our innovative approach to financial education. Our graduates consistently receive offers from top-tier investment banks, hedge funds, and fintech companies.</p>
+
+  <h2>Our Commitment</h2>
+  <p>We are committed to staying at the forefront of financial technology and education. Our curriculum is continuously updated to reflect the latest industry trends, regulatory changes, and technological advances in the world of finance.</p>
+  <p>Join the FessorPro community and take the next step in your journey toward becoming a quantitative finance professional.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo">Fessor<span>Pro</span></span>
+      <p>Live coding sessions &amp; expert handholding with top Quants. Weekly personalized tutoring, guaranteed learning outcomes.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="about-us.html">About Us</a>
+      <a href="https://fessorpro.com/blog" target="_blank">Blogs</a>
+      <a href="contact-us.html">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms-conditions.html">Terms &amp; Conditions</a>
+      <a href="refund-policy.html">Refund Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 FessorPro.com — All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
