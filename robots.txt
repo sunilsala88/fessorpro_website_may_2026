@@ -1,0 +1,52 @@
+# Robots.txt for FessorPro - www.fessorpro.com
+# Last Updated: May 2026
+
+# Allow all major search engines and AI crawlers
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /*.pdf$
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Allow Bing/Microsoft
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Allow AI crawlers - Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Allow AI crawlers - OpenAI GPT Bot
+User-agent: GPTBot
+Allow: /
+
+# Allow AI crawlers - Anthropic Claude
+User-agent: Claude-Web
+Allow: /
+
+# Allow CommonCrawl (for AI training datasets)
+User-agent: CCBot
+Allow: /
+
+# Allow other beneficial crawlers
+User-agent: MJ12bot
+Allow: /
+
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+User-agent: DotBot
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.fessorpro.com/sitemap.xml

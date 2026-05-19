@@ -1,0 +1,29 @@
+/* TEAM */
+Owner: FessorPro
+URL: https://www.fessorpro.com
+Contact: https://www.fessorpro.com/contact-us.html
+
+/* SITE */
+Language: English
+Standards: HTML5, CSS3, JavaScript
+Components: Modern web standards
+Updated: May 2026
+
+/* THANKS */
+Thanks for visiting FessorPro - Learn Python For Finance and Trading
+
+/* SOCIAL */
+Twitter: @fessorpro
+LinkedIn: fessorpro
+
+/* LOCATION */
+Country: Global (Online)
+Timezone: UTC
+
+/* MISSION */
+We teach Python programming, algorithmic trading strategies, and quantitative finance to aspiring traders and developers.
+Courses include: Python Fundamentals, Advanced Python, Financial Trading, Broker APIs, Strategy Building, and Advanced Topics.
+
+/* CREDITS */
+Site Design & Development: FessorPro Team
+Last Updated: May 20, 2026
