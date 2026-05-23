@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<base href="https://67876c76e720c00002aab2c7.storage.fermion.app/public-cached/custom-page-zip-contents/"/>
+<title>Courses - FessorPro | Learn Python For Finance and Trading</title>
+<meta name="description" content="Explore our comprehensive courses on Python programming, algorithmic trading, and quantitative finance. From basics to advanced trading strategies.">
+<meta name="keywords" content="Python courses, algorithmic trading, finance courses, trading education, quantitative finance">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="courses.html">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;overflow-x:hidden}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e8e8e8;display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:68px}
+.nav-logo{font-size:22px;font-weight:800;color:#0f0f0f;text-decoration:none;letter-spacing:-0.5px}
+.nav-logo span{color:#111111}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-login{padding:9px 24px;background:linear-gradient(135deg,#111111,#333333);border-radius:8px;font-size:14px;font-weight:600;color:#fff;text-decoration:none;transition:all .2s;box-shadow:0 2px 10px rgba(255,255,255,0.3)}
+.nav-login:hover{opacity:0.9;transform:translateY(-1px)}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0a0a0f 0%,#0f0f1a 50%,#0a0a0f 100%);color:#fff;padding:80px 6%;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% -10%,rgba(255,255,255,0.15) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent)}
+.hero-inner{position:relative;text-align:center}
+.hero h1{font-size:clamp(32px,3.5vw,48px);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:24px}
+.accent{background:linear-gradient(135deg,#ffffff,#ffffff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:18px;color:#94a3b8;max-width:600px;margin:0 auto 40px;line-height:1.65}
+
+/* SECTION BASE */
+section{padding:80px 6%}
+.section-eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#111111;margin-bottom:14px}
+.section-eyebrow::before{content:'';width:20px;height:2px;background:#111111;border-radius:2px}
+.section-title{font-size:clamp(28px,3.5vw,40px);font-weight:800;letter-spacing:-1px;line-height:1.12;margin-bottom:16px;color:#0f0f0f}
+.section-sub{font-size:16px;color:#64748b;line-height:1.7;max-width:600px;margin:0 auto 52px}
+
+/* COURSES SECTION */
+.courses-section{background:#fafafa;border-top:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0}
+.courses-header{text-align:center;margin-bottom:52px}
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px;margin-top:52px}
+
+/* COURSE CARD */
+.course-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;transition:all .3s;box-shadow:0 2px 12px rgba(0,0,0,0.05);cursor:pointer;display:flex;flex-direction:column}
+.course-card:hover{transform:translateY(-6px);border-color:#111111;box-shadow:0 12px 32px rgba(0,0,0,0.12)}
+.course-image{width:100%;height:200px;background:linear-gradient(135deg,#f0f0f0,#e0e0e0);display:flex;align-items:center;justify-content:center;color:#999;font-size:32px;overflow:hidden}
+.course-image img{width:100%;height:100%;object-fit:cover}
+.course-content{padding:24px;flex-grow:1;display:flex;flex-direction:column}
+.course-name{font-size:16px;font-weight:700;color:#0f0f0f;margin-bottom:12px;line-height:1.4;min-height:48px}
+.course-meta{display:flex;align-items:center;gap:12px;margin:16px 0;flex-wrap:wrap}
+.course-badge{background:rgba(17,17,17,0.1);color:#111111;font-size:12px;padding:4px 12px;border-radius:6px;font-weight:500}
+.course-actions{display:flex;gap:12px;margin-top:auto;padding-top:16px;border-top:1px solid #f0f0f0}
+.course-link{flex:1;display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;background:linear-gradient(135deg,#111111,#333333);color:#fff;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all .2s;border:none;cursor:pointer}
+.course-link:hover{opacity:0.9;transform:translateY(-1px)}
+
+/* LOADING STATE */
+.loading{text-align:center;padding:60px 20px;color:#64748b;font-size:16px}
+.loading::after{content:'';display:inline-block;width:16px;height:16px;margin-left:12px;border:2px solid #e5e7eb;border-top-color:#111111;border-radius:50%;animation:spin .6s linear infinite}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ERROR STATE */
+.error{background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:24px;text-align:center;color:#dc2626;margin:40px 0}
+.error-title{font-size:18px;font-weight:700;margin-bottom:8px}
+.error-text{font-size:14px;margin-bottom:16px}
+
+/* EMPTY STATE */
+.empty{text-align:center;padding:60px 20px;color:#64748b}
+.empty-icon{font-size:48px;margin-bottom:16px}
+.empty-text{font-size:16px}
+
+/* FOOTER */
+footer{background:#0f0f0f;color:#fff;padding:60px 6%;border-top:1px solid #2a2a2a}
+.footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px;max-width:1200px;margin:0 auto;margin-bottom:40px}
+.footer-section h4{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;color:#e5e7eb}
+.footer-section ul{list-style:none}
+.footer-section li{margin-bottom:10px}
+.footer-section a{color:#94a3b8;text-decoration:none;font-size:14px;transition:color .2s}
+.footer-section a:hover{color:#e5e7eb}
+.footer-bottom{border-top:1px solid #2a2a2a;padding-top:30px;text-align:center;color:#64748b;font-size:13px}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:0 4%;height:60px}
+  .nav-logo{font-size:18px}
+  .hero{padding:60px 4%}
+  .hero h1{font-size:28px}
+  section{padding:60px 4%}
+  .courses-grid{grid-template-columns:1fr}
+  .courses-grid{gap:20px}
+  .section-title{font-size:28px}
+}
+
+@media(max-width:480px){
+  nav{padding:0 3%}
+  .hero{padding:40px 3%}
+  .hero h1{font-size:24px}
+  .hero-sub{font-size:14px}
+  section{padding:40px 3%}
+  .section-title{font-size:22px}
+  .course-card{border-radius:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://fessorpro.com" class="nav-logo">Fessor<span>Pro</span></a>
+  <div class="nav-right">
+    <a href="https://fessorpro.com/login" class="nav-login" target="_blank">Login</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="courses-section">
+  <div class="courses-header">
+    <div class="section-eyebrow" style="justify-content:center;margin-left:auto;margin-right:auto">Available Courses</div>
+    <h2 class="section-title">Master Your Skills</h2>
+    <p class="section-sub">Choose from our carefully designed courses to advance your knowledge in finance and trading</p>
+  </div>
+  <div class="courses-grid">
+    <div class="course-card">
+      <div class="course-image">
+        <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #111111, #333333); color: white; font-size: 48px;">🐍</div>
+      </div>
+      <div class="course-content">
+        <h3 class="course-name">Python Live Program</h3>
+        <p style="font-size: 14px; color: #64748b; margin-bottom: 16px; line-height: 1.5;">Master Python programming with live interactive sessions and hands-on coding practice.</p>
+        <div class="course-actions">
+          <a href="https://fessorpro.com/course/pythonliveprogram" target="_blank" class="course-link">
+            Explore Course →
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="course-card">
+      <div class="course-image">
+        <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; font-size: 48px;">💱</div>
+      </div>
+      <div class="course-content">
+        <h3 class="course-name">Forex Trading</h3>
+        <p style="font-size: 14px; color: #64748b; margin-bottom: 16px; line-height: 1.5;">Learn professional forex trading strategies and techniques from experienced market traders.</p>
+        <div class="course-actions">
+          <a href="https://fessorpro.com/course/forex-trading" target="_blank" class="course-link">
+            Explore Course →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>FessorPro</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+        <li><a href="refund-policy.html">Refund Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="contact-us.html">Get in Touch</a></li>
+        <li><a href="https://wa.me/919987390615" target="_blank">WhatsApp</a></li>
+        <li><a href="https://calendly.com/nielshah85/meet-up" target="_blank">Book a Call</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 FessorPro. All rights reserved.</p>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

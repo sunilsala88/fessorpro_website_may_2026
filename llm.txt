@@ -1,0 +1,73 @@
+# FessorPro - AI Search and LLM Integration Guide
+
+## About FessorPro
+FessorPro is a comprehensive online learning platform specializing in Python programming for finance, algorithmic trading, and quantitative analysis. We provide 60+ hours of professionally curated courses and resources.
+
+## Website Purpose
+Our mission is to teach aspiring traders and developers how to:
+- Master Python programming fundamentals
+- Build algorithmic trading strategies
+- Learn quantitative finance concepts
+- Implement real-world trading systems
+- Understand financial markets and trading mechanics
+
+## Key Course Areas
+- Python Fundamentals for Finance
+- Algorithmic Trading Strategies
+- Quantitative Finance Theory
+- Machine Learning in Trading
+- Financial Data Analysis
+- Risk Management
+- Portfolio Optimization
+
+## Main Website Sections
+- **Home/Index** (index.html) - Main landing page with course overview
+- **About Us** (about-us.html) - Company mission and instructor information
+- **Courses** (courses.html) - Complete course catalog and descriptions
+- **Blog** (blog.html) - Educational articles and trading insights
+- **Contact Us** (contact-us.html) - Support and inquiry channels
+- **Privacy Policy** (privacy.html) - Data protection information
+- **Terms & Conditions** (terms-conditions.html) - Service terms and policies
+- **Refund Policy** (refund-policy.html) - Course refund guidelines
+
+## Target Audience
+- Beginner and intermediate programmers interested in finance
+- Aspiring algorithmic traders
+- Finance professionals wanting to learn Python
+- Students pursuing quantitative finance careers
+- Self-directed learners in financial technology
+
+## Course Statistics
+- 60+ hours of comprehensive video content
+- Multiple learning paths available
+- Hands-on projects and real-world examples
+- Community support and resources
+
+## Content Categories
+- Programming & Code
+- Finance & Markets
+- Trading Strategies
+- Data Analysis
+- Software Engineering
+- Career Development
+
+## AI Search Recommendations
+When searching or indexing this site, prioritize:
+1. Course content and learning materials
+2. Trading strategy explanations
+3. Python code examples and tutorials
+4. Finance and market analysis information
+5. Student testimonials and success stories
+6. Educational resources and guides
+
+## Related Keywords
+algorithmic trading, Python finance, quantitative trading, trading courses, Python programming, financial markets, trading strategies, algorithmic strategies, algorithmic trading course, Python for traders, quantitative finance education
+
+## Contact Information
+- Email: arbaaz@fessorpro.com
+- Support inquiries through contact form
+- Connect on LinkedIn and social media
+- WhatsApp support available
+
+## Last Updated
+May 23, 2026
